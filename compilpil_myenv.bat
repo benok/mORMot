@@ -9,7 +9,8 @@ rem   call compilpil.bat
 
 
 if "%mORMot%"=="" set mORMot=\dev\lib
-if "%bin%"==""    set bin=c:\temp\tempbuild
+:if "%bin%"==""    set bin=c:\temp\tempbuild
+if "%bin%"==""    set bin=%mORMot%\%Platform%\%Config%
 
 set defaultFolders=%mORMot%;%mORMot%\sqlite3;%mORMot%\syndbdataset;%mORMot%\crossplatform;%mORMot%\sqlite3\DDD\dom;%mORMot%\sqlite3\DDD\infra -I%mORMot%;%mORMot%\crossplatform
 if "%DelphiVersion%"=="" (
@@ -37,7 +38,7 @@ if "%DelphiVersion%"=="" (
 		)
 	)
 )
-set Switches=-B -Q -GD -O%mORMot%\SQLite3 -R%mORMot% -E%bin%\exe -N%bin%\dcu %Switches%
+set Switches=-B -Q -GD -O%mORMot%\SQLite3 -R%mORMot% -E%bin%\exe -N%bin%\dcu %MySwitches% %Switches%
 if not exist %DCC% goto NoDCCCompiler
 
 echo.
@@ -77,6 +78,8 @@ copy TestSQL3.cfg.bak TestSQL3.cfg /Y> nul
 
 if "%DelphiVersion%"=="Delphi 5" goto SKIPSYNPROJECT
 
+if "%SamplesOnly%"=="true" goto COMPILESAMPLES
+
 %DCC% TestSQL3Register.dpr %Switches%
 @if errorlevel 1 pause
 %DCC% ServiceTestSQL3.dpr %Switches%
@@ -87,7 +90,86 @@ if "%LVCL%"=="LVCL" goto NoDCCCompiler
 %DCC% TestOleDB.dpr %Switches%
 @if errorlevel 1 pause
 
+
+:COMPILESAMPLES
+echo "<<samples needs to be build dcus>>"
+
 set samples=%mORMot%\sqlite3\Samples\
+
+cd "%samples%05 - Report created from code"
+echo.
+echo %CD%
+%DCC% TestSQLite3Pages.dpr %Switches%
+@if errorlevel 1 pause
+
+cd "%samples%08 - TaskDialog"
+echo.
+echo %CD%
+%DCC% TaskDialogTest.dpr %Switches%
+@if errorlevel 1 pause
+
+cd "%samples%11 - Exception logging"
+echo.
+echo %CD%
+:%DCC% LibraryTest.dpr %Switches%
+:@if errorlevel 1 pause
+%DCC% LoggingTest.dpr %Switches%
+@if errorlevel 1 pause
+%DCC% LogView.dpr %Switches%
+@if errorlevel 1 pause
+%DCC% Map2Mab.dpr %Switches%
+@if errorlevel 1 pause
+:%DCC% MyLibrary.dpr %Switches%
+:@if errorlevel 1 pause
+%DCC% UnSynLz.dpr %Switches%
+@if errorlevel 1 pause
+
+cd "%samples%12 - SynDB Explorer"
+echo.
+echo %CD%
+%DCC% SynDBExplorer.dpr %Switches%
+@if errorlevel 1 pause
+
+cd "%samples%17 - TClientDataset use"
+echo.
+echo %CD%
+%DCC% mORMotVCLTest.dpr %Switches%
+@if errorlevel 1 pause
+
+cd "%samples%25 - JSON performance"
+echo.
+echo %CD%
+%DCC% JSONPerfTests.dpr %Switches%
+@if errorlevel 1 pause
+
+cd "%samples%27 - CrossPlatform Clients"
+echo.
+echo %CD%
+%DCC% RegressionTests.dpr %Switches%
+@if errorlevel 1 pause
+%DCC% RegressionTestsServer.dpr %Switches%
+@if errorlevel 1 pause
+:%DCC% VCLClient.dpr %Switches%
+:@if errorlevel 1 pause
+%DCC% Project14ServerHttpWrapper.dpr %Switches%
+@if errorlevel 1 pause
+
+cd "%samples%30 - MVC Server"
+echo.
+echo %CD%
+rem %DCC% MVCServer.dpr %Switches%
+rem %DCC% MVCServerMongoDB.dpr %Switches%
+%DCC% MVCServerFirebird.dpr %Switches% -I%ZeosInc% -U%ZeosPathBase%\%Platform%\%Config%
+@if errorlevel 1 pause
+
+cd "%samples%MainDemo"
+echo.
+echo %CD%
+call FileMainRes.bat
+%DCC% SynFile.dpr %Switches%
+@if errorlevel 1 pause
+
+exit /b
 
 cd "%samples%01 - In Memory ORM"
 echo.
