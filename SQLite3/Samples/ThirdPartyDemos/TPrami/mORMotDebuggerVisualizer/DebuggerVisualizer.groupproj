@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DA93A190-E891-4807-AAB8-1F6F5EF31434}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="mORMotDebuggerVisualizer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="mORMotDebugVisualizerTestAppdproj.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="mORMotDebuggerVisualizer">
+        <MSBuild Projects="mORMotDebuggerVisualizer.dproj"/>
+    </Target>
+    <Target Name="mORMotDebuggerVisualizer:Clean">
+        <MSBuild Projects="mORMotDebuggerVisualizer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mORMotDebuggerVisualizer:Make">
+        <MSBuild Projects="mORMotDebuggerVisualizer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="mORMotDebugVisualizerTestAppdproj">
+        <MSBuild Projects="mORMotDebugVisualizerTestAppdproj.dproj"/>
+    </Target>
+    <Target Name="mORMotDebugVisualizerTestAppdproj:Clean">
+        <MSBuild Projects="mORMotDebugVisualizerTestAppdproj.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mORMotDebugVisualizerTestAppdproj:Make">
+        <MSBuild Projects="mORMotDebugVisualizerTestAppdproj.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="mORMotDebuggerVisualizer;mORMotDebugVisualizerTestAppdproj"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="mORMotDebuggerVisualizer:Clean;mORMotDebugVisualizerTestAppdproj:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="mORMotDebuggerVisualizer:Make;mORMotDebugVisualizerTestAppdproj:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

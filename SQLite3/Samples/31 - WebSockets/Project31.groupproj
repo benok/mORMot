@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{34783C9E-EB1D-48B7-9B1D-35DB8D3D1DA9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project31ChatClient.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project31ChatServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project31LongWorkClient.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project31LongWorkServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project31SimpleEchoServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project31WinHTTPEchoServer.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project31ChatClient">
+        <MSBuild Projects="Project31ChatClient.dproj"/>
+    </Target>
+    <Target Name="Project31ChatClient:Clean">
+        <MSBuild Projects="Project31ChatClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project31ChatClient:Make">
+        <MSBuild Projects="Project31ChatClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project31ChatServer">
+        <MSBuild Projects="Project31ChatServer.dproj"/>
+    </Target>
+    <Target Name="Project31ChatServer:Clean">
+        <MSBuild Projects="Project31ChatServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project31ChatServer:Make">
+        <MSBuild Projects="Project31ChatServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project31LongWorkClient">
+        <MSBuild Projects="Project31LongWorkClient.dproj"/>
+    </Target>
+    <Target Name="Project31LongWorkClient:Clean">
+        <MSBuild Projects="Project31LongWorkClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project31LongWorkClient:Make">
+        <MSBuild Projects="Project31LongWorkClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project31LongWorkServer">
+        <MSBuild Projects="Project31LongWorkServer.dproj"/>
+    </Target>
+    <Target Name="Project31LongWorkServer:Clean">
+        <MSBuild Projects="Project31LongWorkServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project31LongWorkServer:Make">
+        <MSBuild Projects="Project31LongWorkServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project31SimpleEchoServer">
+        <MSBuild Projects="Project31SimpleEchoServer.dproj"/>
+    </Target>
+    <Target Name="Project31SimpleEchoServer:Clean">
+        <MSBuild Projects="Project31SimpleEchoServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project31SimpleEchoServer:Make">
+        <MSBuild Projects="Project31SimpleEchoServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project31WinHTTPEchoServer">
+        <MSBuild Projects="Project31WinHTTPEchoServer.dproj"/>
+    </Target>
+    <Target Name="Project31WinHTTPEchoServer:Clean">
+        <MSBuild Projects="Project31WinHTTPEchoServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project31WinHTTPEchoServer:Make">
+        <MSBuild Projects="Project31WinHTTPEchoServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project31ChatClient;Project31ChatServer;Project31LongWorkClient;Project31LongWorkServer;Project31SimpleEchoServer;Project31WinHTTPEchoServer"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project31ChatClient:Clean;Project31ChatServer:Clean;Project31LongWorkClient:Clean;Project31LongWorkServer:Clean;Project31SimpleEchoServer:Clean;Project31WinHTTPEchoServer:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project31ChatClient:Make;Project31ChatServer:Make;Project31LongWorkClient:Make;Project31LongWorkServer:Make;Project31SimpleEchoServer:Make;Project31WinHTTPEchoServer:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

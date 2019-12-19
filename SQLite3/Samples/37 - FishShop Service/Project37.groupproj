@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0EB79FAD-7542-4F70-AF33-BA27663BCBAC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FishShopDaemon.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestFishShop.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FishShopDaemon">
+        <MSBuild Projects="FishShopDaemon.dproj"/>
+    </Target>
+    <Target Name="FishShopDaemon:Clean">
+        <MSBuild Projects="FishShopDaemon.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FishShopDaemon:Make">
+        <MSBuild Projects="FishShopDaemon.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestFishShop">
+        <MSBuild Projects="TestFishShop.dproj"/>
+    </Target>
+    <Target Name="TestFishShop:Clean">
+        <MSBuild Projects="TestFishShop.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestFishShop:Make">
+        <MSBuild Projects="TestFishShop.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FishShopDaemon;TestFishShop"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FishShopDaemon:Clean;TestFishShop:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FishShopDaemon:Make;TestFishShop:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

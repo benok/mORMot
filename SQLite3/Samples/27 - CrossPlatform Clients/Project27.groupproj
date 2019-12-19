@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CCBB0BBB-692F-4C68-918C-81ADB27CA3AB}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FMClient.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MobileClient.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project14ServerHttpWrapper.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RegressionTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCLClient.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FMClient">
+        <MSBuild Projects="FMClient.dproj"/>
+    </Target>
+    <Target Name="FMClient:Clean">
+        <MSBuild Projects="FMClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FMClient:Make">
+        <MSBuild Projects="FMClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MobileClient">
+        <MSBuild Projects="MobileClient.dproj"/>
+    </Target>
+    <Target Name="MobileClient:Clean">
+        <MSBuild Projects="MobileClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MobileClient:Make">
+        <MSBuild Projects="MobileClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project14ServerHttpWrapper">
+        <MSBuild Projects="Project14ServerHttpWrapper.dproj"/>
+    </Target>
+    <Target Name="Project14ServerHttpWrapper:Clean">
+        <MSBuild Projects="Project14ServerHttpWrapper.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project14ServerHttpWrapper:Make">
+        <MSBuild Projects="Project14ServerHttpWrapper.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RegressionTests">
+        <MSBuild Projects="RegressionTests.dproj"/>
+    </Target>
+    <Target Name="RegressionTests:Clean">
+        <MSBuild Projects="RegressionTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RegressionTests:Make">
+        <MSBuild Projects="RegressionTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VCLClient">
+        <MSBuild Projects="VCLClient.dproj"/>
+    </Target>
+    <Target Name="VCLClient:Clean">
+        <MSBuild Projects="VCLClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLClient:Make">
+        <MSBuild Projects="VCLClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FMClient;MobileClient;Project14ServerHttpWrapper;RegressionTests;VCLClient"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FMClient:Clean;MobileClient:Clean;Project14ServerHttpWrapper:Clean;RegressionTests:Clean;VCLClient:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FMClient:Make;MobileClient:Make;Project14ServerHttpWrapper:Make;RegressionTests:Make;VCLClient:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BE7BEB72-AC4B-49D7-B8C4-951C721C339D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SynPdfFormCanvas.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SynPdfLayers.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestSQLite3Pages.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SynPdfFormCanvas">
+        <MSBuild Projects="SynPdfFormCanvas.dproj"/>
+    </Target>
+    <Target Name="SynPdfFormCanvas:Clean">
+        <MSBuild Projects="SynPdfFormCanvas.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SynPdfFormCanvas:Make">
+        <MSBuild Projects="SynPdfFormCanvas.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SynPdfLayers">
+        <MSBuild Projects="SynPdfLayers.dproj"/>
+    </Target>
+    <Target Name="SynPdfLayers:Clean">
+        <MSBuild Projects="SynPdfLayers.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SynPdfLayers:Make">
+        <MSBuild Projects="SynPdfLayers.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestSQLite3Pages">
+        <MSBuild Projects="TestSQLite3Pages.dproj"/>
+    </Target>
+    <Target Name="TestSQLite3Pages:Clean">
+        <MSBuild Projects="TestSQLite3Pages.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestSQLite3Pages:Make">
+        <MSBuild Projects="TestSQLite3Pages.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SynPdfFormCanvas;SynPdfLayers;TestSQLite3Pages"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SynPdfFormCanvas:Clean;SynPdfLayers:Clean;TestSQLite3Pages:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SynPdfFormCanvas:Make;SynPdfLayers:Make;TestSQLite3Pages:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

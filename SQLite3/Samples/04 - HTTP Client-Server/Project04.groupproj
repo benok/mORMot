@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4996445B-CCEF-400B-80A7-C2F61E724B1D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project04Client.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project04Server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project04ServerRegister.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project04ServerStatic.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project04Client">
+        <MSBuild Projects="Project04Client.dproj"/>
+    </Target>
+    <Target Name="Project04Client:Clean">
+        <MSBuild Projects="Project04Client.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project04Client:Make">
+        <MSBuild Projects="Project04Client.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project04Server">
+        <MSBuild Projects="Project04Server.dproj"/>
+    </Target>
+    <Target Name="Project04Server:Clean">
+        <MSBuild Projects="Project04Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project04Server:Make">
+        <MSBuild Projects="Project04Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project04ServerRegister">
+        <MSBuild Projects="Project04ServerRegister.dproj"/>
+    </Target>
+    <Target Name="Project04ServerRegister:Clean">
+        <MSBuild Projects="Project04ServerRegister.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project04ServerRegister:Make">
+        <MSBuild Projects="Project04ServerRegister.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project04ServerStatic">
+        <MSBuild Projects="Project04ServerStatic.dproj"/>
+    </Target>
+    <Target Name="Project04ServerStatic:Clean">
+        <MSBuild Projects="Project04ServerStatic.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project04ServerStatic:Make">
+        <MSBuild Projects="Project04ServerStatic.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project04Client;Project04Server;Project04ServerRegister;Project04ServerStatic"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project04Client:Clean;Project04Server:Clean;Project04ServerRegister:Clean;Project04ServerStatic:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project04Client:Make;Project04Server:Make;Project04ServerRegister:Make;Project04ServerStatic:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

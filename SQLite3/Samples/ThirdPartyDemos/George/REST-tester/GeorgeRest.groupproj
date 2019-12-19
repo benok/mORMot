@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FACB19FD-9381-474C-AC34-12F1DADBD6F6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="mORMotRESTcl.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="mORMotRESTsrv.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="mORMotRESTcl">
+        <MSBuild Projects="mORMotRESTcl.dproj"/>
+    </Target>
+    <Target Name="mORMotRESTcl:Clean">
+        <MSBuild Projects="mORMotRESTcl.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mORMotRESTcl:Make">
+        <MSBuild Projects="mORMotRESTcl.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="mORMotRESTsrv">
+        <MSBuild Projects="mORMotRESTsrv.dproj"/>
+    </Target>
+    <Target Name="mORMotRESTsrv:Clean">
+        <MSBuild Projects="mORMotRESTsrv.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mORMotRESTsrv:Make">
+        <MSBuild Projects="mORMotRESTsrv.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="mORMotRESTcl;mORMotRESTsrv"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="mORMotRESTcl:Clean;mORMotRESTsrv:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="mORMotRESTcl:Make;mORMotRESTsrv:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

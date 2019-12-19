@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D16F571E-0BE1-4611-852C-41554CEC1E95}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TestMustache.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestSynSM.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TestMustache">
+        <MSBuild Projects="TestMustache.dproj"/>
+    </Target>
+    <Target Name="TestMustache:Clean">
+        <MSBuild Projects="TestMustache.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestMustache:Make">
+        <MSBuild Projects="TestMustache.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestSynSM">
+        <MSBuild Projects="TestSynSM.dproj"/>
+    </Target>
+    <Target Name="TestSynSM:Clean">
+        <MSBuild Projects="TestSynSM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestSynSM:Make">
+        <MSBuild Projects="TestSynSM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TestMustache;TestSynSM"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TestMustache:Clean;TestSynSM:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TestMustache:Make;TestSynSM:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

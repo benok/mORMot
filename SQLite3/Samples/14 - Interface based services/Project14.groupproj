@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EB83BB18-73E3-46F2-8CE7-27B7998FD446}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project14Client.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project14Server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project14ServerExternal.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project14ServerHttp.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project14ServerHttpWeak.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project14ServerInMemory.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project14Client">
+        <MSBuild Projects="Project14Client.dproj"/>
+    </Target>
+    <Target Name="Project14Client:Clean">
+        <MSBuild Projects="Project14Client.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project14Client:Make">
+        <MSBuild Projects="Project14Client.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project14Server">
+        <MSBuild Projects="Project14Server.dproj"/>
+    </Target>
+    <Target Name="Project14Server:Clean">
+        <MSBuild Projects="Project14Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project14Server:Make">
+        <MSBuild Projects="Project14Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project14ServerExternal">
+        <MSBuild Projects="Project14ServerExternal.dproj"/>
+    </Target>
+    <Target Name="Project14ServerExternal:Clean">
+        <MSBuild Projects="Project14ServerExternal.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project14ServerExternal:Make">
+        <MSBuild Projects="Project14ServerExternal.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project14ServerHttp">
+        <MSBuild Projects="Project14ServerHttp.dproj"/>
+    </Target>
+    <Target Name="Project14ServerHttp:Clean">
+        <MSBuild Projects="Project14ServerHttp.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project14ServerHttp:Make">
+        <MSBuild Projects="Project14ServerHttp.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project14ServerHttpWeak">
+        <MSBuild Projects="Project14ServerHttpWeak.dproj"/>
+    </Target>
+    <Target Name="Project14ServerHttpWeak:Clean">
+        <MSBuild Projects="Project14ServerHttpWeak.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project14ServerHttpWeak:Make">
+        <MSBuild Projects="Project14ServerHttpWeak.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project14ServerInMemory">
+        <MSBuild Projects="Project14ServerInMemory.dproj"/>
+    </Target>
+    <Target Name="Project14ServerInMemory:Clean">
+        <MSBuild Projects="Project14ServerInMemory.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project14ServerInMemory:Make">
+        <MSBuild Projects="Project14ServerInMemory.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project14Client;Project14Server;Project14ServerExternal;Project14ServerHttp;Project14ServerHttpWeak;Project14ServerInMemory"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project14Client:Clean;Project14Server:Clean;Project14ServerExternal:Clean;Project14ServerHttp:Clean;Project14ServerHttpWeak:Clean;Project14ServerInMemory:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project14Client:Make;Project14Server:Make;Project14ServerExternal:Make;Project14ServerHttp:Make;Project14ServerHttpWeak:Make;Project14ServerInMemory:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

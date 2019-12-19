@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D795CB63-CF92-4361-ACF2-764182500744}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MVCServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MVCServerFirebird.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MVCServerMongoDB.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MVCServerPostgreSQL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MVCServer">
+        <MSBuild Projects="MVCServer.dproj"/>
+    </Target>
+    <Target Name="MVCServer:Clean">
+        <MSBuild Projects="MVCServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVCServer:Make">
+        <MSBuild Projects="MVCServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MVCServerFirebird">
+        <MSBuild Projects="MVCServerFirebird.dproj"/>
+    </Target>
+    <Target Name="MVCServerFirebird:Clean">
+        <MSBuild Projects="MVCServerFirebird.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVCServerFirebird:Make">
+        <MSBuild Projects="MVCServerFirebird.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MVCServerMongoDB">
+        <MSBuild Projects="MVCServerMongoDB.dproj"/>
+    </Target>
+    <Target Name="MVCServerMongoDB:Clean">
+        <MSBuild Projects="MVCServerMongoDB.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVCServerMongoDB:Make">
+        <MSBuild Projects="MVCServerMongoDB.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MVCServerPostgreSQL">
+        <MSBuild Projects="MVCServerPostgreSQL.dproj"/>
+    </Target>
+    <Target Name="MVCServerPostgreSQL:Clean">
+        <MSBuild Projects="MVCServerPostgreSQL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVCServerPostgreSQL:Make">
+        <MSBuild Projects="MVCServerPostgreSQL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MVCServer;MVCServerFirebird;MVCServerMongoDB;MVCServerPostgreSQL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MVCServer:Clean;MVCServerFirebird:Clean;MVCServerMongoDB:Clean;MVCServerPostgreSQL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MVCServer:Make;MVCServerFirebird:Make;MVCServerMongoDB:Make;MVCServerPostgreSQL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
